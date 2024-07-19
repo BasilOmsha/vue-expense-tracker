@@ -25,8 +25,11 @@ import Balance from '../components/Balance.vue'
 import IncomeExpenses from '@/components/IncomeExpenses.vue'
 import TransactioList from '@/components/TransactioList.vue'
 import AddTransaction from '@/components/AddTransaction.vue'
+import { useToast } from 'vue-toastification'
 
 import { ref, computed } from 'vue'
+
+const toast = useToast()
 
 const transactions = ref([
   { id: 1, text: 'Flower', amount: -19.99 },
@@ -63,6 +66,23 @@ const expenses = computed(() => {
     }, 0)
     .toFixed(2) // toFixed adds decimals
 })
+
+// Add transaction
+const handleTransactionSubmitted = (transactionData) => {
+  // console.log(transactionData)
+  transactions.value.push({
+    id: generateUniqueId(),
+    text: transactionData.text,
+    amount: transactionData.amount
+  })
+  // console.log(generateUniqueId())
+  toast.success('Transaction Added!')
+}
+
+// Generate unique ID
+const generateUniqueId = () => {
+  return Math.floor(Math.random() * 1000000)
+}
 </script>
 
 <template>
@@ -71,12 +91,12 @@ const expenses = computed(() => {
     <Header />
     <div class="container">
       <!-- v-bind can be removed -->
-      <Balance v-bind:total="total" />
+      <Balance v-bind:total="+total" />
       <!-- + sign to pass props as numbers-->
       <IncomeExpenses :income="+income" :expenses="+expenses" />
       <!-- passing transactions as a prop to the component -->
       <TransactioList :transactions="transactions" />
-      <AddTransaction />
+      <AddTransaction @transactionSubmitted="handleTransactionSubmitted" />
     </div>
     <!-- </div> -->
   </main>
