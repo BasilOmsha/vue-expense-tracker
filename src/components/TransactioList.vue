@@ -54,7 +54,7 @@ const deleteTransaction = (id) => {
 </script>
 
 <template>
-  <h3>History</h3>
+  <h3>Transactions</h3>
   <ul id="list" class="list">
     <ul id="list" class="list">
       <!-- For looping we are using the v-for directive -->
