@@ -20,7 +20,6 @@ export default {
 
 <!-- new composition api -->
 <script setup>
-import Header from '../components/Header.vue'
 import Balance from '../components/Balance.vue'
 import IncomeExpenses from '@/components/IncomeExpenses.vue'
 import TransactioList from '@/components/TransactioList.vue'
@@ -115,7 +114,6 @@ const saveTransactionsToLocalStorage = () => {
 <template>
   <main>
     <!-- <div class="mainPage"> -->
-    <Header />
     <div class="container">
       <!-- v-bind can be removed -->
       <Balance v-bind:total="+total" />
