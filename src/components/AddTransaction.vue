@@ -32,7 +32,7 @@ const onSubmit = () => {
   <h3>Add new transaction</h3>
   <form id="form" @submit.prevent="onSubmit">
     <div class="form-control">
-      <label for="text">Text</label>
+      <label for="text">Description</label>
       <!-- to bind form data we use v-model attribute -->
       <input type="text" id="text" v-model="text" placeholder="Enter text..." />
     </div>

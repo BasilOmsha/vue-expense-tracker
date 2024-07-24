@@ -186,3 +186,13 @@ input[type='number'] {
 .list li:hover .delete-btn {
   opacity: 1;
 }
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  min-height: 150px;
+  margin-bottom: 10px;
+  padding-bottom: 30px;
+}
